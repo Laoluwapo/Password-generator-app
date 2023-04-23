@@ -7,21 +7,53 @@
   <title>Password generator app</title>
 </head>
 <body>
-
-  Password Generator
-
-  P4$5W0rD!
-
-  Character Length
-
-  Include Uppercase Letters
-  Include Lowercase Letters
-  Include Numbers
-  Include Symbols
-
-  Strength
-
-  Generate
+  <div class="container">
+    <h1>Password Generator</h1>
+    <div class="pass-container">
+      <p class="gen-pass">P4$5W0rD!</p><span class="gen-icon"></span>
+    </div>
+    <div class="pass-inclusions">
+      <div class="char-container">
+        <div class="char-length">
+          <p>Character Length</p><span>10</span>
+        </div>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="14" value="10" class="slider" id="myRange">
+        </div>
+      </div>
+      <div class="inclusions">
+        <div class="inclusions-input">
+          <input type="checkbox" id="uppercase" value="uppercase">
+          <label for="uppercase">Include Uppercase Letters</label>
+        </div>
+        <div class="inclusions-input">
+          <input type="checkbox" id="lowercase" value="lowercase">
+          <label for="lowercase">Include Lowercase Letters</label>
+        </div>
+        <div class="inclusions-input">
+          <input type="checkbox" id="inc-numbers" value="inc-numbers">
+          <label for="inc-numbers">Include Numbers</label>
+        </div>
+        <div class="inclusions-input">
+          <input type="checkbox" id="inc-symbols" value="inc-symbols">
+          <label for="inc-symbols">Include Symbols</label>
+        </div>
+      </div>
+      <div class="strength-container">
+        <p class="pass-strength">strength</p>
+        <div class="strength-rating">
+          <p class="rating-text">Dummy</p>
+          <div class="strength-bar">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+          </div>
+        </div>
+      </div>
+      <button>Generate</button>
+    </div>
+  </div>
   <script src="./app.js"></script>
 </body>
 </html>
