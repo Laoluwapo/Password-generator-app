@@ -86,9 +86,7 @@ body {
 }
 .inclusions-input {
     margin-bottom: 1.6rem;
-}
-.inclusions-input label {
-    margin-left: 2rem;
+    display: block;
 }
 .last {
     margin: 0;
@@ -111,6 +109,7 @@ body {
 }
 .rating-text {
     text-transform: uppercase;
+    font-size: 1.8rem;
 }
 .strength-bar div {
     height: 2.8rem;
@@ -135,4 +134,44 @@ body {
 }
 .icon-right {
     margin-left: 1.6rem;
+}
+
+/* For tablets & desktop screens */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+    .container h1 {
+        font-size: 2.4rem;
+    }
+    .pass-container {
+        font-size: 3.2rem;
+        padding: 1.9rem 3.2rem;
+    }
+    .pass-inclusions {
+        font-size: 1.8rem;
+        padding: 2.4rem 3.2rem;
+    }
+    .char-length {
+        margin-bottom: 1.6rem;
+    }
+    .char-length span {
+        font-size: 3.2rem;
+    }
+    .inclusions-input {
+        margin-bottom: 2rem;
+    }
+    .strength-container {
+        padding: 2.5rem 3.2rem;
+        margin: 3.2rem 0;
+    }
+    .rating-text {
+        font-size: 2.4rem;
+    }
+    .generate {
+        padding: 2.1rem;
+    }
+    .icon-right {
+        margin-left: 2.4rem;
+    }
 }
