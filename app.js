@@ -1,5 +1,6 @@
 // Selectors
 const range = document.getElementById("myRange");
+const charLength = document.querySelector(".char-length span");
 
 // Functions
 // Function that updates the range input color
@@ -23,4 +24,12 @@ range.oninput = function () {
   updateGradient();
 };
 
+// Function that updates the character length as the slider is changed
+function updateCharLength(e) {
+  charLength.textContent = e.target.value;
+}
+
 // Event listeners
+range.addEventListener("change", (e) => {
+  updateCharLength(e);
+});
