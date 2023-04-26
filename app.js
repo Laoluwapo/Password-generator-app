@@ -1,6 +1,8 @@
 // Selectors
 const range = document.getElementById("myRange");
 const charLength = document.querySelector(".char-length span");
+const genPass = document.querySelector(".gen-pass");
+const submitBtn = document.querySelector(".generate");
 
 // Functions
 // Function that updates the range input color
@@ -26,10 +28,31 @@ range.oninput = function () {
 
 // Function that updates the character length as the slider is changed
 function updateCharLength(e) {
-  charLength.textContent = e.target.value;
+  let passLength = e.target.value;
+  charLength.textContent = passLength;
+}
+
+// Function that handles other password generating functions
+function generatePassword() {
+  let passLength = range.value;
+  if (!range.min) {
+    createPassword(passLength);
+  } else {
+    alert("Please eje, choose a valid password length");
+  }
+}
+
+// Function generate random password
+function createPassword(passLength) {
+  let charset =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let password = "";
+  for (let i = 0; i < passLength; i++) {
+    password += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  genPass.textContent = password;
 }
 
 // Event listeners
-range.addEventListener("change", (e) => {
-  updateCharLength(e);
-});
+range.addEventListener("input", updateCharLength);
+submitBtn.addEventListener("click", generatePassword);
