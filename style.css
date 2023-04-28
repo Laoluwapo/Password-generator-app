@@ -170,6 +170,7 @@ body {
     border: none;
     outline: none;
     color: var(--bg-secondary);
+    cursor: pointer;
     font-size: inherit;
     font-family: inherit;
     padding: 1.8rem;
