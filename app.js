@@ -4,6 +4,7 @@ const charLength = document.querySelector(".char-length span");
 const genPass = document.querySelector(".gen-pass");
 const submitBtn = document.querySelector(".generate");
 const rating = document.querySelector(".rating-text");
+const copyIcon = document.querySelector(".icon-copy");
 const bar1 = document.querySelector(".bar1");
 const bar2 = document.querySelector(".bar2");
 const bar3 = document.querySelector(".bar3");
@@ -92,6 +93,18 @@ function checkPassStrength(passLength) {
   }
 }
 
+// Function that copies the generated password to clipboard
+function copyPassword() {
+  const el = document.createElement("textarea");
+  el.value = genPass.innerText;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("copy");
+  document.body.removeChild(el);
+  alert("Password copied to clipboard!");
+}
+
 // Event listeners
 range.addEventListener("input", updateCharLength);
 submitBtn.addEventListener("click", generatePassword);
+copyIcon.addEventListener("click", copyPassword);
