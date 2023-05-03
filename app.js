@@ -9,6 +9,7 @@ const bar1 = document.querySelector(".bar1");
 const bar2 = document.querySelector(".bar2");
 const bar3 = document.querySelector(".bar3");
 const bar4 = document.querySelector(".bar4");
+const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 
 // Functions
 // Function that updates the range input color
@@ -42,23 +43,50 @@ function updateCharLength(e) {
 function generatePassword() {
   let passLength = range.value;
   if (range.value == 0) {
-    alert("Please eje, choose a valid password length");
-    genPass.textContent = "";
+    alert("Please choose a valid password length");
+    genPass.style.opacity = "0.25";
   } else {
     createPassword(passLength);
   }
   checkPassStrength(passLength);
 }
 
-// Function generate random password
+// Function that generates random passwords
 function createPassword(passLength) {
-  let charset =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let password = "";
-  for (let i = 0; i < passLength; i++) {
-    password += charset.charAt(Math.floor(Math.random() * charset.length));
+  genPass.style.opacity = "1";
+  let charset = "";
+  let isCheckboxChecked = false;
+  // Add characters based on selected checkboxes
+  allCheckboxes.forEach((checkbox) => {
+    if (checkbox.checked && checkbox.value === "uppercase") {
+      charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      isCheckboxChecked = true;
+    }
+    if (checkbox.checked && checkbox.value === "lowercase") {
+      charset += "abcdefghijklmnopqrstuvwxyz";
+      isCheckboxChecked = true;
+    }
+    if (checkbox.checked && checkbox.value === "inc-numbers") {
+      charset += "0123456789";
+      isCheckboxChecked = true;
+    }
+    if (checkbox.checked && checkbox.value === "inc-symbols") {
+      charset += "!@#$%^&*()_+-=[]{}|;:,.<>?";
+      isCheckboxChecked = true;
+    }
+  });
+  // Check if at least one checkbox is selected
+  if (!isCheckboxChecked) {
+    alert("Please select at least one checkbox");
+    genPass.style.opacity = "0.25";
+  } else {
+    // Generate the password using the selected characters
+    let password = "";
+    for (let i = 0; i < passLength; i++) {
+      password += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+    genPass.textContent = password;
   }
-  genPass.textContent = password;
 }
 
 // Function that checks the strength of the password
@@ -88,8 +116,7 @@ function checkPassStrength(passLength) {
     bar3.style.background = "#A4FFAF";
     bar4.style.background = "#A4FFAF";
   } else {
-    rating.textContent = "too weak!";
-    bar1.style.background = "#F64A4A";
+    rating.textContent = "";
   }
 }
 
