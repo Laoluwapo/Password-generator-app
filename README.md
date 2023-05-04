@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/password-generator-app-S7KeveOycJ)
-- Live Site URL: [Live site URL](https://password-generator-app-by-ag.vercel.app/)
+- Solution URL: [Click here!](https://www.frontendmentor.io/solutions/password-generator-app-S7KeveOycJ)
+- Live Site URL: [Click here!](https://password-generator-app-by-ag.vercel.app/)
 
 ## My process
 
