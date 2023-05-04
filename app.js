@@ -5,6 +5,7 @@ const genPass = document.querySelector(".gen-pass");
 const submitBtn = document.querySelector(".generate");
 const rating = document.querySelector(".rating-text");
 const copyIcon = document.querySelector(".icon-copy");
+const bars = document.querySelectorAll(".bar");
 const bar1 = document.querySelector(".bar1");
 const bar2 = document.querySelector(".bar2");
 const bar3 = document.querySelector(".bar3");
@@ -42,13 +43,18 @@ function updateCharLength(e) {
 // Function that handles other password generating functions
 function generatePassword() {
   let passLength = range.value;
+  allCheckboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      checkPassStrength(passLength);
+    }
+  });
   if (range.value == 0) {
     alert("Please choose a valid password length");
     genPass.style.opacity = "0.25";
+    rating.textContent = "";
   } else {
     createPassword(passLength);
   }
-  checkPassStrength(passLength);
 }
 
 // Function that generates random passwords
@@ -91,33 +97,28 @@ function createPassword(passLength) {
 
 // Function that checks the strength of the password
 function checkPassStrength(passLength) {
-  // Reset the styles of each bar element
-  bar1.style.backgroundColor = "";
-  bar2.style.backgroundColor = "";
-  bar3.style.backgroundColor = "";
-  bar4.style.backgroundColor = "";
-  // Check the strength
-  if (passLength > 0 && passLength <= 4) {
-    rating.textContent = "too weak!";
-    bar1.style.background = "#F64A4A";
-  } else if (passLength > 4 && passLength <= 8) {
-    rating.textContent = "weak";
-    bar1.style.background = "#FB7C58";
-    bar2.style.background = "#FB7C58";
-  } else if (passLength > 8 && passLength <= 12) {
-    rating.textContent = "medium";
-    bar1.style.background = "#F8CD65";
-    bar2.style.background = "#F8CD65";
-    bar3.style.background = "#F8CD65";
-  } else if (passLength > 12 && passLength <= 16) {
-    rating.textContent = "strong";
-    bar1.style.background = "#A4FFAF";
-    bar2.style.background = "#A4FFAF";
-    bar3.style.background = "#A4FFAF";
-    bar4.style.background = "#A4FFAF";
-  } else {
-    rating.textContent = "";
-  }
+  bars.forEach((bar, index) => {
+    bar.style.backgroundColor = "";
+    bar.classList.remove("no-border");
+    // bar.style.border = "";
+    if (index == 0 && passLength > 0 && passLength <= 4) {
+      rating.textContent = "too weak!";
+      bar.style.background = "#F64A4A";
+      bar.classList.add("no-border");
+    } else if (index <= 1 && passLength > 4 && passLength <= 8) {
+      rating.textContent = "weak";
+      bar.style.background = "#FB7C58";
+      bar.classList.add("no-border");
+    } else if (index <= 2 && passLength > 8 && passLength <= 12) {
+      rating.textContent = "medium";
+      bar.style.background = "#F8CD65";
+      bar.classList.add("no-border");
+    } else if (index <= 3 && passLength > 12 && passLength <= 16) {
+      rating.textContent = "strong";
+      bar.style.background = "#A4FFAF";
+      bar.classList.add("no-border");
+    }
+  });
 }
 
 // Function that copies the generated password to clipboard
